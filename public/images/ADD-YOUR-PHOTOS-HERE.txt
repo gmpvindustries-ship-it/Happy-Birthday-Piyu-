@@ -1,0 +1,11 @@
+Place the actual photo files in this folder using these exact filenames:
+
+Priyadarshini Jhopli.jpg
+Priyadarshini Nakhre.jpg
+Priyadarshini Mand.jpg
+Priyadarshini Lakshya.jpg
+Priyadarshini Marel.jpg
+Priyadarshini Normal.jpg
+Birthday.jpg
+
+The actual photos were not included in the source files available when this ZIP was assembled, so they must be copied here from your computer. The website shows a visible placeholder that names any missing image file. The two collage images are not used on the opening page.
