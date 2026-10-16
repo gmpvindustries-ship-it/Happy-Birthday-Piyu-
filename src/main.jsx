@@ -3,13 +3,13 @@ import { createRoot } from 'react-dom/client';
 import './styles.css';
 
 const A = {
-  jhopli: '/images/Priyadarshini Jhopli.png',
-  nakhre: '/images/Priyadarshini Nakhre.png',
-  mand: '/images/Priyadarshini Mand.png',
-  lakshya: '/images/Priyadarshini Lakshya.png',
-  marel: '/images/Priyadarshini Marel.png',
-  normal: '/images/Priyadarshini Normal.png',
-  final: '/images/Birthday.jpg'
+  jhopli: import.meta.env.BASE_URL + 'images/Priyadarshini Jhopli.png',
+  nakhre: import.meta.env.BASE_URL + 'images/Priyadarshini Nakhre.png',
+  mand: import.meta.env.BASE_URL + 'images/Priyadarshini Mand.png',
+  lakshya: import.meta.env.BASE_URL + 'images/Priyadarshini Lakshya.png',
+  marel: import.meta.env.BASE_URL + 'images/Priyadarshini Marel.png',
+  normal: import.meta.env.BASE_URL + 'images/Priyadarshini Normal.png',
+  final: import.meta.env.BASE_URL + 'images/Birthday.jpg'
 };
 const jokes = [
   { key:'jhopli', title:'Madam, kuthe hotat tumhi? 😴', lines:['मी: पियू, कुठे होतीस तू?','पियूची प्रतिक्रिया: “अरे झोपली होती मी!”','मी: तुझं नाव प्रियदर्शिनी आहे, पण खरं नाव निद्रदर्शिनीच असायला पाहिजे! 😂'], doodle:'💤', alt:'Priyadarshini — sleep joke photograph' },
@@ -347,3 +347,4 @@ function App(){
 }
 
 createRoot(document.getElementById('root')).render(<React.StrictMode><App/></React.StrictMode>);
+
