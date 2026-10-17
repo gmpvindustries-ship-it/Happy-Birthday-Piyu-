@@ -2,7 +2,13 @@ import React, { useEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import './styles.css';
 
-const A = {
+const A = {<video controls playsInline preload="metadata">
+  <source
+    src={`${import.meta.env.BASE_URL}images/Priyadarshini%20Geetak%20Birthday.mp4`}
+    type="video/mp4"
+  />
+  Your browser does not support video playback.
+</video>
   jhopli: import.meta.env.BASE_URL + 'images/Priyadarshini Jhopli.png',
   nakhre: import.meta.env.BASE_URL + 'images/Priyadarshini Nakhre.png',
   mand: import.meta.env.BASE_URL + 'images/Priyadarshini Mand.png',
@@ -481,7 +487,7 @@ function PriyadarshiniCall({ onContinue }) {
               className="call-video"
               src={
                 import.meta.env.BASE_URL +
-                'videos/Priyadarshini%20Geetak%20Birthday.mp4'
+                'images/Priyadarshini%20Geetak%20Birthday.mp4'
               }
               controls
               autoPlay
