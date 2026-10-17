@@ -423,22 +423,23 @@
 }
 
 
+
 @keyframes balloon-confetti-fall {
   0% {
     opacity: 0;
     transform: translate(-50%, -50%) scale(0.4);
   }
+
   15% {
     opacity: 1;
   }
+
   100% {
     opacity: 0;
-    transform: translate(
-      calc(-50% + (var(--i) - 7) * 3px),
-      120px
-    ) rotate(180deg) scale(0.75);
+    transform: translate(-50%, 120px) rotate(180deg) scale(0.75);
   }
 }
+
 
 
 @keyframes call-ring {
