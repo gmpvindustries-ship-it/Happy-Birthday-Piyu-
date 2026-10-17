@@ -329,6 +329,217 @@ function Game({onWin}) {
     <p className="game-hint">Tip: pull left and slightly upward, then release. The heart stays visible if you miss.</p>
   </section>;
 }
+
+const balloonWords = [
+  'Fabulous',
+  'Radiant',
+  'Precious',
+  'Kind',
+  'Extraordinary'
+];
+
+function BalloonIntro({ onContinue }) {
+  const [popped, setPopped] = useState([]);
+
+  const popBalloon = (index) => {
+    setPopped((previous) =>
+      previous.includes(index) ? previous : [...previous, index]
+    );
+  };
+
+  const allPopped = popped.length === balloonWords.length;
+
+  return (
+    <section className="balloon-page page-enter">
+      <div className="eyebrow">
+        <span>A LITTLE MYSTERY</span>
+        <i>✦</i>
+        <span>JUST FOR PIYU</span>
+      </div>
+
+      <h1 className="balloon-heading">
+        So, who is <em>Priyadarshini?</em>
+      </h1>
+
+      <p className="balloon-intro-copy">
+        Five little balloons. Five little truths.
+        Pop them to find out. 🎈
+      </p>
+
+      <div className="balloon-grid">
+        {balloonWords.map((word, index) => {
+          const isPopped = popped.includes(index);
+
+          return (
+            <div
+              key={word}
+              className={`balloon-position balloon-position-${index}`}
+            >
+              {isPopped ? (
+                <div className="balloon-reveal" aria-live="polite">
+                  <span className="balloon-revealed-word">{word}</span>
+
+                  <div className="balloon-confetti-wrap" aria-hidden="true">
+                    {Array.from({ length: 16 }, (_, i) => (
+                      <span
+                        key={i}
+                        className="balloon-confetti"
+                        style={{ '--i': i }}
+                      >
+                        {i % 3 === 0 ? '✦' : i % 3 === 1 ? '✧' : '♥'}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <button
+                  type="button"
+                  className={`birthday-balloon birthday-balloon-${index}`}
+                  onClick={() => popBalloon(index)}
+                  aria-label={`Pop balloon ${index + 1}`}
+                >
+                  <span className="balloon-shine" />
+                  <span className="balloon-number">{index + 1}</span>
+                  <span className="balloon-string" />
+                </button>
+              )}
+            </div>
+          );
+        })}
+      </div>
+
+      <p className="balloon-progress" aria-live="polite">
+        {allPopped
+          ? 'You found all five little truths! 💗'
+          : `${popped.length} of 5 balloons popped`}
+      </p>
+
+      {allPopped && (
+        <div className="love-letter-entry page-enter">
+          <p>And now, a little letter from me to you…</p>
+
+          <button
+            type="button"
+            className="love-envelope-button"
+            onClick={onContinue}
+            aria-label="Open the love letter and continue"
+          >
+            <span className="love-envelope">
+              <span className="love-envelope-flap" />
+              <span className="love-envelope-heart">♥</span>
+            </span>
+            <span className="love-envelope-caption">
+              A little letter, sealed with love
+            </span>
+            <span className="love-envelope-action">
+              Open it, Piyu ♡
+            </span>
+          </button>
+        </div>
+      )}
+    </section>
+  );
+}
+
+function PriyadarshiniCall({ onContinue }) {
+  const [stage, setStage] = useState('video');
+
+  useEffect(() => {
+    if (stage !== 'calling') return undefined;
+
+    const timer = window.setTimeout(() => {
+      setStage('missed');
+    }, 3500);
+
+    return () => window.clearTimeout(timer);
+  }, [stage]);
+
+  const startCall = () => {
+    if (stage === 'video') setStage('calling');
+  };
+
+  return (
+    <section className="call-page page-enter">
+      <div className="eyebrow">
+        <span>MISSION PIYU</span>
+        <i>✦</i>
+        <span>LET'S FIND OUT</span>
+      </div>
+
+      {stage === 'video' && (
+        <>
+          <h1 className="call-heading">
+            Let's call <em>Priyadarshini!</em> 📞
+          </h1>
+
+          <p className="call-copy">
+            Before we investigate, there's someone we need to call.
+          </p>
+
+          <div className="call-video-frame">
+            <video
+              className="call-video"
+              src={
+                import.meta.env.BASE_URL +
+                'videos/Priyadarshini%20Geetak%20Birthday.mp4'
+              }
+              controls
+              autoPlay
+              playsInline
+              preload="metadata"
+              onEnded={startCall}
+            >
+              Your browser does not support video playback.
+            </video>
+          </div>
+
+          <button
+            type="button"
+            className="primary-button call-action"
+            onClick={startCall}
+          >
+            Call Priyadarshini 📞
+          </button>
+
+          <p className="call-hint">
+            Watch the little introduction, then let's call her! 💗
+          </p>
+        </>
+      )}
+
+      {stage === 'calling' && (
+        <div className="call-status-card">
+          <div className="call-phone-animation" aria-hidden="true">
+            ☎
+          </div>
+          <h1>Calling Piyu…</h1>
+          <p>Ringing… ringing… 💗</p>
+          <div className="call-dots" aria-hidden="true">•••</div>
+        </div>
+      )}
+
+      {stage === 'missed' && (
+        <div className="call-status-card page-enter">
+          <div className="missed-call-heart" aria-hidden="true">♡</div>
+          <h1>She didn't pick up! 😭😂</h1>
+          <p>
+            Typical Piyu. Fine, we'll have to discover her
+            through our memories instead.
+          </p>
+
+          <button
+            type="button"
+            className="primary-button"
+            onClick={onContinue}
+          >
+            Let's see her memories →
+          </button>
+        </div>
+      )}
+    </section>
+  );
+}
+
 function App(){
   const [page,setPage]=useState(0),[photoOpen,setPhotoOpen]=useState(false),[boxOpen,setBoxOpen]=useState(false),[revealedJokes,setRevealedJokes]=useState({});
   useEffect(()=>{const fn=e=>{if(e.key==='Escape')setPhotoOpen(false)};window.addEventListener('keydown',fn);return()=>window.removeEventListener('keydown',fn)},[]);
