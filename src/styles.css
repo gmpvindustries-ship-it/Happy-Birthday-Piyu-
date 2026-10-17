@@ -433,12 +433,12 @@
   15% {
     opacity: 1;
   }
-
+  
   100% {
     opacity: 0;
     transform: translate(-50%, 120px) rotate(180deg) scale(0.75);
   }
-}
+
 
 
 
