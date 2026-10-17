@@ -543,7 +543,18 @@ function PriyadarshiniCall({ onContinue }) {
 function App(){
   const [page,setPage]=useState(0),[photoOpen,setPhotoOpen]=useState(false),[boxOpen,setBoxOpen]=useState(false),[revealedJokes,setRevealedJokes]=useState({});
   useEffect(()=>{const fn=e=>{if(e.key==='Escape')setPhotoOpen(false)};window.addEventListener('keydown',fn);return()=>window.removeEventListener('keydown',fn)},[]);
-  const go=n=>{setPage(Math.max(0,Math.min(8,n)));window.scrollTo({top:0,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})};
+ 
+const go = n => {
+  setPage(Math.max(0, Math.min(10, n)));
+  window.scrollTo({
+    top: 0,
+    behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      ? 'auto'
+      : 'smooth'
+  });
+};
+const next = () => go(page + 1);
+const back = () => go(page - 1);
   const next=()=>go(page+1), back=()=>go(page-1);
   return <main className="site-shell"><header className="topbar"><a href="#top" className="brand" onClick={e=>{e.preventDefault();go(0)}}><span className="brand-star">✦</span> Birthday <span>— For Piyu</span> <b>💗</b></a><span className="page-count">{page===0?'A tiny world for you':`${Math.min(page,8)} / 8`}</span></header>
     <div className="decor decor-one">✿</div><div className="decor decor-two">✧</div>
