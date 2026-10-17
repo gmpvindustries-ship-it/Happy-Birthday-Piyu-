@@ -572,4 +572,12 @@ const back = () => go(page - 1);
   </main>
 }
 
+{page === 1 && (
+  <BalloonIntro onContinue={() => go(2)} />
+)}
+
+{page === 2 && (
+  <PriyadarshiniCall onContinue={() => go(3)} />
+)}
+
 createRoot(document.getElementById('root')).render(<React.StrictMode><App/></React.StrictMode>);
