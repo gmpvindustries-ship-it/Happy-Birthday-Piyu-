@@ -483,20 +483,21 @@ function PriyadarshiniCall({ onContinue }) {
           </p>
 
           <div className="call-video-frame">
-            <video
-              className="call-video"
-              src={
-                import.meta.env.BASE_URL +
-                'images/Priyadarshini%20Geetak%20Birthday.mp4'
-              }
-              controls
-              autoPlay
-              playsInline
-              preload="metadata"
-              onEnded={startCall}
-            >
-              Your browser does not support video playback.
-            </video>
+            
+<video
+  className="call-video"
+  src={
+    import.meta.env.BASE_URL +
+    'images/Priyadarshini%20Geetak%20Birthday.mp4'
+  }
+  controls
+  playsInline
+  preload="metadata"
+  onEnded={startCall}
+>
+  Your browser does not support video playback.
+</video>
+
           </div>
 
           <button
