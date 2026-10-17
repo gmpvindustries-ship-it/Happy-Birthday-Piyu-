@@ -2,13 +2,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import './styles.css';
 
-const A = {<video controls playsInline preload="metadata">
-  <source
-    src={`${import.meta.env.BASE_URL}images/Priyadarshini%20Geetak%20Birthday.mp4`}
-    type="video/mp4"
-  />
-  Your browser does not support video playback.
-</video>
+
+const A = {
   jhopli: import.meta.env.BASE_URL + 'images/Priyadarshini Jhopli.png',
   nakhre: import.meta.env.BASE_URL + 'images/Priyadarshini Nakhre.png',
   mand: import.meta.env.BASE_URL + 'images/Priyadarshini Mand.png',
@@ -17,6 +12,7 @@ const A = {<video controls playsInline preload="metadata">
   normal: import.meta.env.BASE_URL + 'images/Priyadarshini Normal.png',
   final: import.meta.env.BASE_URL + 'images/Birthday.jpg'
 };
+
 const jokes = [
   { key:'jhopli', title:'Madam, kuthe hotat tumhi? 😴', lines:['मी: पियू, कुठे होतीस तू?',' “अरे झोपली होती मी!”','मी: तुझं नाव प्रियदर्शिनी आहे, पण खरं नाव निद्रदर्शिनीच असायला पाहिजे! 😂'], doodle:'💤', alt:'Priyadarshini — sleep joke photograph' },
   { key:'nakhre', title:'Majhe gunach ase aahet… 😤', lines:['मी: ठीक आहे, आता मी नाही बोलणार तुझ्याशी!',' “नखरे करायचे नाहीत माझ्यासमोर!”','मी: तुझ्यासमोर नाही करणार, तर कोणासमोर करणार? 😂❤️'], doodle:'💬', alt:'Priyadarshini — nakhre joke photograph' },
